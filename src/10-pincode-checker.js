@@ -6,7 +6,7 @@
  * hai ya float? Valid hai ya nahi? Type checking ka masala!
  *
  * Methods to explore: typeof, Number.isInteger(), Number.isFinite(),
- *   Number.isNaN(), Array.isArray(), Boolean()
+ * Number.isNaN(), Array.isArray(), Boolean()
  *
  * Functions:
  *
@@ -58,21 +58,31 @@
  *   isTruthy("")                 // => false
  */
 export function getDataType(value) {
-  // Your code here
+  if (value === null) {
+    return "null";
+  } else if (Array.isArray(value)) {
+    return "array";
+  } else {
+    return typeof value;
+  }
 }
 
 export function isValidParcelWeight(weight) {
-  // Your code here
+  if (Number.isFinite(weight) && weight > 0 && typeof weight === "number") {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 export function isWholeNumber(value) {
-  // Your code here
+  return Number.isInteger(value);
 }
 
 export function isNotANumber(value) {
-  // Your code here
+  return Number.isNaN(value);
 }
 
 export function isTruthy(value) {
-  // Your code here
+  return Boolean(value);
 }

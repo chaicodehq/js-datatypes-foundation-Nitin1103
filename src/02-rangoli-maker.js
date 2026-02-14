@@ -5,9 +5,7 @@
  * String transform methods use karke patterns banana hai.
  * Tu Priya ki madad kar!
  *
- * Methods to explore: .slice(), .split(), .join(), .replace(),
- *   .replaceAll(), .repeat()
- *
+ * Methods to explore: .slice(), .split(), .join(), .replace(), .replaceAll(), .repeat()
  * Functions:
  *
  *   1. repeatPattern(pattern, times)
@@ -22,14 +20,14 @@
  *      - Example: extractRangoliCenter("***LOTUS***", 3, 8) => "LOTUS"
  *
  *   3. splitAndJoinRangoli(colorString, oldSep, newSep)
- *      - .split(oldSep) se tod aur .join(newSep) se jod
  *      - Separator change karna hai colors ke beech mein
+ *      - .split(oldSep) se tod aur .join(newSep) se jod
  *      - Agar colorString string nahi hai, return ""
  *      - Example: splitAndJoinRangoli("red,blue,green", ",", " | ") => "red | blue | green"
  *
  *   4. replaceRangoliColor(design, oldColor, newColor)
- *      - .replaceAll() use karke ek color ko doosre se replace karo
  *      - Agar koi bhi param string nahi hai, return ""
+ *      - .replaceAll() use karke ek color ko doosre se replace karo
  *      - Example: replaceRangoliColor("red-blue-red-green-red", "red", "pink")
  *                 => "pink-blue-pink-green-pink"
  *
@@ -47,20 +45,44 @@
  */
 export function repeatPattern(pattern, times) {
   // Your code here
+  if (times < 0 || typeof pattern != "string" || !Number.isInteger(times)) {
+    return "";
+  }
+  return pattern.repeat(times);
 }
 
 export function extractRangoliCenter(design, start, end) {
   // Your code here
+  if (
+    typeof design != "string" ||
+    typeof start != "number" ||
+    typeof end != "number"
+  ) {
+    return "";
+  }
+  return design.slice(start, end);
 }
 
 export function splitAndJoinRangoli(colorString, oldSep, newSep) {
-  // Your code here
+  if (typeof colorString != "string") return "";
+  return colorString.split(oldSep).join(newSep);
 }
 
 export function replaceRangoliColor(design, oldColor, newColor) {
   // Your code here
+  if (
+    typeof design != "string" ||
+    typeof oldColor != "string" ||
+    typeof newColor != "string"
+  )
+    return "";
+  return design.replaceAll(oldColor, newColor);
 }
 
 export function makeRangoliBorder(char, length) {
   // Your code here
+  if (typeof char != "string" || length <= 0) {
+    return "";
+  }
+  return char.repeat(100).slice(0, length);
 }
